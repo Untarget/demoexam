@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90554C2B-3498-49A8-A1E2-0A91A05C9B34}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsFormsApp</RootNamespace>
+    <AssemblyName>WindowsFormsApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.11.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.11.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Cryptography.8.0.0\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=6.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.6.0.1\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.8.0.1\lib\net462\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.7.5.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.7.5.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.7.5.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.7.5.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.7.5.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.7.5.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=7.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.7.5.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.8.0.1\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.10\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\AdministratorMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\AdministratorMainForm.Designer.cs">
+      <DependentUpon>AdministratorMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ApartmentsInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\ApartmentsInfoForm.Designer.cs">
+      <DependentUpon>ApartmentsInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\CleaningCalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\CleaningCalendarForm.Designer.cs">
+      <DependentUpon>CleaningCalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\GetInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\GetInForm.Designer.cs">
+      <DependentUpon>GetInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\GetOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\GetOutForm.Designer.cs">
+      <DependentUpon>GetOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ReservaitionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\ReservaitionForm.Designer.cs">
+      <DependentUpon>ReservaitionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BossMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BossMainForm.Designer.cs">
+      <DependentUpon>BossMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet24.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet25.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet25.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet26.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet26.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet27.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet28.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet28.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet29.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet29.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet30.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet30.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="hotelDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrator\AdministratorMainForm.resx">
+      <DependentUpon>AdministratorMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\ApartmentsInfoForm.resx">
+      <DependentUpon>ApartmentsInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\CleaningCalendarForm.resx">
+      <DependentUpon>CleaningCalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\GetInForm.resx">
+      <DependentUpon>GetInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\GetOutForm.resx">
+      <DependentUpon>GetOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\ReservaitionForm.resx">
+      <DependentUpon>ReservaitionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BossMainForm.resx">
+      <DependentUpon>BossMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="hotelDataSet.xsc">
+      <DependentUpon>hotelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet.xss">
+      <DependentUpon>hotelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet1.xsc">
+      <DependentUpon>hotelDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet1.xss">
+      <DependentUpon>hotelDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet10.xsc">
+      <DependentUpon>hotelDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet10.xss">
+      <DependentUpon>hotelDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet11.xsc">
+      <DependentUpon>hotelDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet11.xss">
+      <DependentUpon>hotelDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet12.xsc">
+      <DependentUpon>hotelDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet12.xss">
+      <DependentUpon>hotelDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet13.xsc">
+      <DependentUpon>hotelDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet13.xss">
+      <DependentUpon>hotelDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet14.xsc">
+      <DependentUpon>hotelDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet14.xss">
+      <DependentUpon>hotelDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet15.xsc">
+      <DependentUpon>hotelDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet15.xss">
+      <DependentUpon>hotelDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet16.xsc">
+      <DependentUpon>hotelDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet16.xss">
+      <DependentUpon>hotelDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet17.xsc">
+      <DependentUpon>hotelDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet17.xss">
+      <DependentUpon>hotelDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet18.xsc">
+      <DependentUpon>hotelDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet18.xss">
+      <DependentUpon>hotelDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet19.xsc">
+      <DependentUpon>hotelDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet19.xss">
+      <DependentUpon>hotelDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet2.xsc">
+      <DependentUpon>hotelDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet2.xss">
+      <DependentUpon>hotelDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet20.xsc">
+      <DependentUpon>hotelDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet20.xss">
+      <DependentUpon>hotelDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet21.xsc">
+      <DependentUpon>hotelDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet21.xss">
+      <DependentUpon>hotelDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet22.xsc">
+      <DependentUpon>hotelDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet22.xss">
+      <DependentUpon>hotelDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet23.xsc">
+      <DependentUpon>hotelDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet23.xss">
+      <DependentUpon>hotelDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet24.xsc">
+      <DependentUpon>hotelDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet24.xss">
+      <DependentUpon>hotelDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet25.xsc">
+      <DependentUpon>hotelDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet25.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet25.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet25.xss">
+      <DependentUpon>hotelDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet26.xsc">
+      <DependentUpon>hotelDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet26.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet26.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet26.xss">
+      <DependentUpon>hotelDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet27.xsc">
+      <DependentUpon>hotelDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet27.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet27.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet27.xss">
+      <DependentUpon>hotelDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet28.xsc">
+      <DependentUpon>hotelDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet28.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet28.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet28.xss">
+      <DependentUpon>hotelDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet29.xsc">
+      <DependentUpon>hotelDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet29.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet29.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet29.xss">
+      <DependentUpon>hotelDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet3.xsc">
+      <DependentUpon>hotelDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet3.xss">
+      <DependentUpon>hotelDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet30.xsc">
+      <DependentUpon>hotelDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet30.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet30.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet30.xss">
+      <DependentUpon>hotelDataSet30.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet4.xsc">
+      <DependentUpon>hotelDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet4.xss">
+      <DependentUpon>hotelDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet5.xsc">
+      <DependentUpon>hotelDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet5.xss">
+      <DependentUpon>hotelDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet6.xsc">
+      <DependentUpon>hotelDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet6.xss">
+      <DependentUpon>hotelDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet7.xsc">
+      <DependentUpon>hotelDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet7.xss">
+      <DependentUpon>hotelDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet8.xsc">
+      <DependentUpon>hotelDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet8.xss">
+      <DependentUpon>hotelDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet9.xsc">
+      <DependentUpon>hotelDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="hotelDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelDataSet9.xss">
+      <DependentUpon>hotelDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>
